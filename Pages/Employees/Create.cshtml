@@ -1,0 +1,90 @@
+﻿@page
+@model GestionEmployees.Pages.Employees.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<div class="container-fluid min-vh-90 d-flex flex-column justify-content-center">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-8">
+            <div class="card shadow-lg">
+                <div class="card-header bg-primary text-white">
+                    <h1 class="h2 mb-0 text-center">
+                        <i class="bi bi-person-plus me-2"></i>Create Employee
+                    </h1>
+                </div>
+                <div class="card-body p-4">
+                    <form method="post" class="row g-3">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                        <div class="col-md-6">
+                            <label asp-for="Employee.FullName" class="form-label fw-bold">
+                                <i class="bi bi-person me-1"></i>Full Name <span class="text-danger">*</span>
+                            </label>
+                            <input asp-for="Employee.FullName" class="form-control" />
+                            <span asp-validation-for="Employee.FullName" class="text-danger small"></span>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label asp-for="Employee.HireDate" class="form-label fw-bold">
+                                <i class="bi bi-calendar me-1"></i>Hire Date <span class="text-danger">*</span>
+                            </label>
+                            <input asp-for="Employee.HireDate" type="date" class="form-control" />
+                            <span asp-validation-for="Employee.HireDate" class="text-danger small"></span>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label asp-for="Employee.Department" class="form-label fw-bold">
+                                <i class="bi bi-building me-1"></i>Department <span class="text-danger">*</span>
+                            </label>
+                            <select asp-for="Employee.Department" class="form-select">
+                                <option value="">Select Department</option>
+                                <option value="IT">IT</option>
+                                <option value="HR">HR</option>
+                                <option value="Finance">Finance</option>
+                                <option value="Marketing">Marketing</option>
+                            </select>
+                            <span asp-validation-for="Employee.Department" class="text-danger small"></span>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label asp-for="Employee.Salary" class="form-label fw-bold">
+                                <i class="bi bi-currency-dollar me-1"></i>Salary (DT) <span class="text-danger">*</span>
+                            </label>
+                            <div class="input-group">
+                                <input asp-for="Employee.Salary" class="form-control" />
+                                <span class="input-group-text">DT</span>
+                            </div>
+                            <span asp-validation-for="Employee.Salary" class="text-danger small"></span>
+                        </div>
+
+                        <div class="col-12">
+                            <label asp-for="Employee.Email" class="form-label fw-bold">
+                                <i class="bi bi-envelope me-1"></i>Email <span class="text-danger">*</span>
+                            </label>
+                            <input asp-for="Employee.Email" type="email" class="form-control" />
+                            <span asp-validation-for="Employee.Email" class="text-danger small"></span>
+                        </div>
+
+                        <div class="col-12 text-center mt-4">
+                            <button type="submit" class="btn btn-primary px-5">
+                                <i class="bi bi-save me-2"></i>Create Employee
+                            </button>
+                            <a asp-page="Index" class="btn btn-outline-secondary ms-3">
+                                <i class="bi bi-arrow-left me-2"></i>Back to List
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
